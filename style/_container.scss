@@ -1,0 +1,56 @@
+// _container.scss
+
+@import "variables"; // Importar variables
+
+// Mixin para ajustar contenedor
+@mixin container-adjust() {
+    padding: 1rem; // Puedes ajustar esto según tus necesidades
+    border: 1px solid black;
+}
+
+// Mixin para asignar color de fondo
+@mixin color-dinamico($social) {
+    @if map-has-key($paleta, $social) {
+        background-color: map-get($paleta, $social);
+    } @else {
+        background-color: #ccc; // Color por defecto si no se encuentra
+    }
+}
+
+// Uso del mixin en cada contenedor de red social
+.rrss {
+    // Ajustes generales para el contenedor
+    @include container-adjust(); 
+
+    &.facebook {
+        @include color-dinamico(facebook);
+    }
+
+    &.linkedin {
+        @include color-dinamico(linkedin);
+    }
+
+    &.instagram {
+        @include color-dinamico(instagram);
+    }
+
+    &.youtube {
+        @include color-dinamico(youtube);
+    }
+
+    &.twitter {
+        @include color-dinamico(twitter);
+    }
+
+    &.pinterest {
+        @include color-dinamico(pinterest);
+    }
+
+    // Ajuste adicional para el contenido interno
+    .icon {
+        height: 5rem; // Ajustar tamaño
+        width: auto; 
+        object-fit: contain; 
+        margin-right: 15px; // Espacio entre ícono y texto
+    }
+}

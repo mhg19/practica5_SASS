@@ -1,0 +1,156 @@
+@forward "normalize";
+@import "variables";
+@import "container";
+
+.imgSass {
+    height: 9rem;
+}
+
+h1,
+h2 {
+    color: $sassPink;
+}
+
+footer{
+  background-color: $sassPink;
+  color: whitesmoke;
+  a{
+    color: #760735;
+    font-weight: bolder;
+  }
+}
+
+nav {
+    margin-top: 1rem;
+    a{
+        text-decoration: none;
+    background-color: white;
+    color: $sassPink;
+
+    &:hover {
+        font-weight: bold;
+    }
+
+    }
+}
+
+body {
+    font-family: sans-serif;
+    font-weight: 200;
+    text-decoration: none;
+
+}
+
+
+
+nav {
+    background-color: $otherPink;
+    padding: 1rem;
+
+}
+
+aside{
+    a{
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: black;
+    }
+    
+}
+
+
+//Ejercicio paleta de colores
+
+// Definición de un mapa de colores
+$colores: (
+  firebrick: #B22222,
+  greenyellow: #ADFF2F,
+  deepskyblue: #00BFFF,
+  blueviolet: #8A2BE2
+);
+
+// Funciones para obtener colores claros y oscuros
+@function lighten($color, $amount) {
+  @return mix(white, $color, $amount);
+}
+
+@function darken($color, $amount) {
+  @return mix(black, $color, $amount);
+}
+
+// Estilos para los colores principales
+.principales {
+  .misColoresPrincipales {
+    .colorP {
+      width: 100%; // Se ajusta al ancho del contenedor
+      height: 100px; // Altura fija para los cuadrados de color
+      margin-bottom: 10px; // Espacio entre los colores
+    }
+
+    @each $nombre, $valor in $colores {
+      // Para cada color principal, asignamos el fondo
+      &:nth-child(n) {
+        &:nth-of-type(1) {
+          .colorP {
+            background-color: $valor; // Color principal
+          }
+        }
+
+        // Cambiar el número del :nth-of-type para que funcione con cada color
+      }
+    }
+  }
+}
+
+strong, h3, h4{
+    font-weight: bold;
+}
+
+// Estilos para la sección de tonalidades
+.tonalidades {
+  .color-tono {
+    width: 100%; // Ancho del div
+    height: 100px; // Altura del div
+
+    &.firebrick {
+      background-color: map-get($colores, firebrick); // Color principal
+    }
+    &.firebrick-light {
+      background-color: lighten(map-get($colores, firebrick), 20%); // Color claro
+    }
+    &.firebrick-dark {
+      background-color: darken(map-get($colores, firebrick), 20%); // Color oscuro
+    }
+
+    &.greenyellow {
+      background-color: map-get($colores, greenyellow);
+    }
+    &.greenyellow-light {
+      background-color: lighten(map-get($colores, greenyellow), 20%);
+    }
+    &.greenyellow-dark {
+      background-color: darken(map-get($colores, greenyellow), 20%);
+    }
+
+    &.deepskyblue {
+      background-color: map-get($colores, deepskyblue);
+    }
+    &.deepskyblue-light {
+      background-color: lighten(map-get($colores, deepskyblue), 20%);
+    }
+    &.deepskyblue-dark {
+      background-color: darken(map-get($colores, deepskyblue), 20%);
+    }
+
+    &.blueviolet {
+      background-color: map-get($colores, blueviolet);
+    }
+    &.blueviolet-light {
+      background-color: lighten(map-get($colores, blueviolet), 20%);
+    }
+    &.blueviolet-dark {
+      background-color: darken(map-get($colores, blueviolet), 20%);
+    }
+  }
+}
