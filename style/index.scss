@@ -2,15 +2,17 @@
 @import "variables";
 @import "container";
 
+//Ajuste img sass
 .imgSass {
     height: 9rem;
 }
-
+//ajuste de los h1 y 2
 h1,
 h2 {
     color: $sassPink;
 }
 
+//Ajustes del footer
 footer{
   background-color: $sassPink;
   color: whitesmoke;
@@ -20,13 +22,17 @@ footer{
   }
 }
 
+//Nav
 nav {
     margin-top: 1rem;
+    background-color: $otherPink;
+    padding: 1rem;
+    //Enlaces dentro de la nav
     a{
         text-decoration: none;
     background-color: white;
     color: $sassPink;
-
+    //Enlaces dentro de la nav cuando pasas por encima
     &:hover {
         font-weight: bold;
     }
@@ -34,6 +40,7 @@ nav {
     }
 }
 
+//Características principales
 body {
     font-family: sans-serif;
     font-weight: 200;
@@ -41,14 +48,7 @@ body {
 
 }
 
-
-
-nav {
-    background-color: $otherPink;
-    padding: 1rem;
-
-}
-
+//Características del ASIDE
 aside{
     a{
     display: flex;
@@ -62,7 +62,7 @@ aside{
 
 //Ejercicio paleta de colores
 
-// Definición de un mapa de colores
+//Mapa de colores principales
 $colores: (
   firebrick: #B22222,
   greenyellow: #ADFF2F,
@@ -70,39 +70,44 @@ $colores: (
   blueviolet: #8A2BE2
 );
 
-// Funciones para obtener colores claros y oscuros
+// Funciones
+
+//Para color LIGHTEN devolvemos con return el mix (con blanco)
 @function lighten($color, $amount) {
   @return mix(white, $color, $amount);
 }
 
+
+//Para color LIGHTEN devolvemos con return el mix (con negro)
 @function darken($color, $amount) {
   @return mix(black, $color, $amount);
 }
 
-// Estilos para los colores principales
+// Para la seccion de colores principales:
 .principales {
   .misColoresPrincipales {
+    //Caracteristicas de los cuadros de color
     .colorP {
-      width: 100%; // Se ajusta al ancho del contenedor
-      height: 100px; // Altura fija para los cuadrados de color
-      margin-bottom: 10px; // Espacio entre los colores
+      width: 100%; 
+      height: 100px; 
+      margin-bottom: 10px; 
     }
 
     @each $nombre, $valor in $colores {
-      // Para cada color principal, asignamos el fondo
+      // Para cada color principal, asignamos el fondo.....
       &:nth-child(n) {
         &:nth-of-type(1) {
           .colorP {
-            background-color: $valor; // Color principal
+            //Le indicamos el color depende de este
+            background-color: $valor; 
           }
         }
-
-        // Cambiar el número del :nth-of-type para que funcione con cada color
       }
     }
   }
 }
 
+//Para que se vean gruesos
 strong, h3, h4{
     font-weight: bold;
 }
@@ -110,17 +115,19 @@ strong, h3, h4{
 // Estilos para la sección de tonalidades
 .tonalidades {
   .color-tono {
-    width: 100%; // Ancho del div
-    height: 100px; // Altura del div
+    //cada cuadro de color
+    width: 100%; 
+    height: 100px; 
 
+    //Aquí le estamos indicando el color con las funciones anteriores
     &.firebrick {
-      background-color: map-get($colores, firebrick); // Color principal
+      background-color: map-get($colores, firebrick); 
     }
     &.firebrick-light {
-      background-color: lighten(map-get($colores, firebrick), 20%); // Color claro
+      background-color: lighten(map-get($colores, firebrick), 20%);
     }
     &.firebrick-dark {
-      background-color: darken(map-get($colores, firebrick), 20%); // Color oscuro
+      background-color: darken(map-get($colores, firebrick), 20%); 
     }
 
     &.greenyellow {
